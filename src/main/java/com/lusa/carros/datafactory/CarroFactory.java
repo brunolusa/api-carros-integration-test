@@ -1,4 +1,4 @@
-package datafactory;
+package com.lusa.carros.datafactory;
 
 import com.lusa.carros.model.Carro;
 

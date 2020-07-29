@@ -1,6 +1,6 @@
-package healthcheck;
+package com.lusa.carros.healthcheck;
 
-import basetest.BaseTest;
+import com.lusa.carros.basetest.BaseTest;
 import org.testng.annotations.Test;
 
 public class HealthCheckTest extends BaseTest {

@@ -1,8 +1,8 @@
-package functional;
+package com.lusa.carros.functional;
 
-import basetest.BaseTest;
+import com.lusa.carros.basetest.BaseTest;
 import com.lusa.carros.model.Carro;
-import datafactory.CarroFactory;
+import com.lusa.carros.datafactory.CarroFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

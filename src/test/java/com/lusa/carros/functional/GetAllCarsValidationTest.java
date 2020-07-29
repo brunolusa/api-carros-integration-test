@@ -1,6 +1,6 @@
-package functional;
+package com.lusa.carros.functional;
 
-import basetest.BaseTest;
+import com.lusa.carros.basetest.BaseTest;
 import org.testng.annotations.Test;
 
 public class GetAllCarsValidationTest extends BaseTest {

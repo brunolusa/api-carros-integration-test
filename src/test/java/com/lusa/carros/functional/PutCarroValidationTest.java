@@ -1,6 +1,6 @@
-package functional;
+package com.lusa.carros.functional;
 
-import basetest.BaseTest;
+import com.lusa.carros.basetest.BaseTest;
 import com.lusa.carros.model.Carro;
 import org.testng.annotations.Test;
 import java.util.List;

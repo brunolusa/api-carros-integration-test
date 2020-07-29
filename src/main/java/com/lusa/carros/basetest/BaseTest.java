@@ -1,4 +1,4 @@
-package basetest;
+package com.lusa.carros.basetest;
 
 import com.aventstack.extentreports.testng.listener.ExtentITestListenerClassAdapter;
 import com.lusa.carros.clients.*;

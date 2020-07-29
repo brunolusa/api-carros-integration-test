@@ -1,8 +1,8 @@
-package acceptance;
+package com.lusa.carros.acceptance;
 
-import basetest.BaseTest;
+import com.lusa.carros.basetest.BaseTest;
+import com.lusa.carros.datadriven.CarroDataProvider;
 import com.lusa.carros.model.Carro;
-import datadriven.CarroDataProvider;
 import org.testng.annotations.Test;
 import static org.testng.Assert.assertEquals;
 

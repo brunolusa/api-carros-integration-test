@@ -1,6 +1,6 @@
-package contract;
+package com.lusa.carros.contract;
 
-import basetest.BaseTest;
+import com.lusa.carros.basetest.BaseTest;
 import org.testng.annotations.Test;
 import java.io.File;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;

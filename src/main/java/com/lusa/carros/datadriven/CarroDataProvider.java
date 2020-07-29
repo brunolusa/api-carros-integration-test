@@ -1,6 +1,6 @@
-package datadriven;
+package com.lusa.carros.datadriven;
 
-import datafactory.CarroFactory;
+import com.lusa.carros.datafactory.CarroFactory;
 import org.testng.annotations.DataProvider;
 
 public class CarroDataProvider {
