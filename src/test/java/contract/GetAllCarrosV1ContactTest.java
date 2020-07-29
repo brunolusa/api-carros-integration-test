@@ -12,12 +12,8 @@ public class GetAllCarrosV1ContactTest extends BaseTest {
 
     @Test
     public void ValidaContratoGetCarros(){
-        given().
-            spec(getRequestSpecification()).
-        when().
-            get("/carros").
-        then().
-            statusCode(SC_OK).
-            body(matchesJsonSchema(new File("src/test/resources/jsonSchema/GetAllCarrosV1JsonSchema.json")));
+
+        getCarrosClient.getAllCarros().body(matchesJsonSchema(new File("src/test/resources/jsonSchema/GetAllCarrosV1JsonSchema.json")));
+
     }
 }
