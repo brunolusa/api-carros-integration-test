@@ -2,6 +2,7 @@ package functional;
 
 import basetest.BaseTest;
 import builder.Carro;
+import com.lusa.carros.clients.DeleteCarrosClient;
 import datadriven.CarroDataProvider;
 import org.testng.annotations.Test;
 import static io.restassured.RestAssured.given;
@@ -10,6 +11,7 @@ import static org.apache.http.HttpStatus.SC_NO_CONTENT;
 import static requestspecification.CarrosRequestSpecification.getRequestSpecification;
 
 public class DeleteCarroValidationTest extends BaseTest {
+
 
     @Test(dataProvider = "novoCarro", dataProviderClass = CarroDataProvider.class)
     public void validaDelecaodoCarro(Carro carroProvider){
@@ -25,13 +27,12 @@ public class DeleteCarroValidationTest extends BaseTest {
                 body().
                     as(Carro.class);
 
-        given().
-            spec(getRequestSpecification()).
-            pathParam("id",carroInserido.getId()).
-        when().
-            delete("/carros/{id}").
-        then().
-            statusCode(SC_NO_CONTENT);
+        deleteCarrosClient.deleteCarros(carroInserido.getId());
 
+    }
+
+    @Test
+    public void validaDelecaoSemDados(){
+        deleteCarrosClient.deleteCarroNotFound(0L);
     }
 }
