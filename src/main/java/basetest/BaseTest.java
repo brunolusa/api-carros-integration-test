@@ -5,6 +5,7 @@ import com.aventstack.extentreports.testng.listener.ExtentITestListenerClassAdap
 import com.lusa.carros.clients.DeleteCarrosClient;
 import com.lusa.carros.clients.GetActuatorClient;
 import com.lusa.carros.clients.GetCarrosClient;
+import com.lusa.carros.clients.PostCarrosClient;
 import io.restassured.RestAssured;
 import io.restassured.specification.RequestSpecification;
 import org.testng.annotations.BeforeSuite;
@@ -17,6 +18,7 @@ public class BaseTest {
     public static DeleteCarrosClient deleteCarrosClient;
     public static GetActuatorClient getActuatorClient;
     public static GetCarrosClient getCarrosClient;
+    public static PostCarrosClient postCarrosClient;
 
     @BeforeSuite
     public static void setUp() {
@@ -25,6 +27,7 @@ public class BaseTest {
         deleteCarrosClient = new DeleteCarrosClient();
         getActuatorClient = new GetActuatorClient();
         getCarrosClient = new GetCarrosClient();
+        postCarrosClient = new PostCarrosClient();
 
     }
 }

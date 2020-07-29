@@ -1,6 +1,6 @@
 package datafactory;
 
-import builder.Carro;
+import com.lusa.carros.model.Carro;
 
 public class CarroFactory {
 

@@ -1,30 +1,22 @@
 package functional;
 
 import basetest.BaseTest;
-import builder.Carro;
+import com.lusa.carros.model.Carro;
 import datadriven.CarroDataProvider;
 import org.testng.annotations.Test;
-import static io.restassured.RestAssured.given;
-import static org.apache.http.HttpStatus.SC_CREATED;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.Matchers.notNullValue;
-import static requestspecification.CarrosRequestSpecification.getRequestSpecification;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotNull;
 
 public class PostCarroValidationTest extends BaseTest {
 
     @Test(dataProvider = "novoCarro", dataProviderClass = CarroDataProvider.class)
     public void criaNovoCarro(Carro carro){
 
-        given().
-            spec(getRequestSpecification()).
-            body(carro).
-        when().
-            post("/carros").
-        then().
-            statusCode(SC_CREATED).
-            body("id", notNullValue(),
-            "modelo",is(carro.getModelo()),
-                    "marca",is(carro.getMarca()));
+        Carro carroCriado = postCarrosClient.criaNovoCarro(carro).extract().body().as(Carro.class);
+
+        assertNotNull(carroCriado.getId());
+        assertEquals(carroCriado.getMarca(), carro.getMarca());
+        assertEquals(carroCriado.getModelo(), carro.getModelo());
 
     }
 }
