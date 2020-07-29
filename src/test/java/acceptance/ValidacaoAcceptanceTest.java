@@ -1,14 +1,10 @@
 package acceptance;
 
 import basetest.BaseTest;
-import builder.Carro;
+import com.lusa.carros.model.Carro;
 import datadriven.CarroDataProvider;
-import org.testng.Assert;
 import org.testng.annotations.Test;
-import static org.hamcrest.CoreMatchers.*;
-import static io.restassured.RestAssured.given;
-import static org.apache.http.HttpStatus.*;
-import static requestspecification.CarrosRequestSpecification.getRequestSpecification;
+import static org.testng.Assert.assertEquals;
 
 public class ValidacaoAcceptanceTest extends BaseTest {
 
@@ -18,61 +14,36 @@ public class ValidacaoAcceptanceTest extends BaseTest {
         //CRUD
         //CREATE
         Carro novoCarro =
-        given().
-            spec(getRequestSpecification()).
-            body(c).
-        when().
-            post("/carros").
-        then().
-            statusCode(SC_CREATED).
+            postCarrosClient.criaNovoCarro(c).
                 extract().
                     body().
                         as(Carro.class);
 
         //READ
         Carro carroDaBase =
-        given().
-            spec(getRequestSpecification()).
-            pathParam("id",novoCarro.getId()).
-        when().
-            get("/carros/{id}").
-        then().
-            statusCode(SC_OK).
+            getCarrosClient.getCarroById(novoCarro.getId()).
                 extract().
                     body().
-                    as(Carro.class);
+                        as(Carro.class);
 
-        Assert.assertEquals(novoCarro, carroDaBase);
+        assertEquals(novoCarro, carroDaBase);
 
         //UPDATE
         carroDaBase.setModelo("Taurus");
 
-        given().
-            spec(getRequestSpecification()).
-            pathParam("id",carroDaBase.getId()).
-            body(carroDaBase).
-        when().
-            put("/carros/{id}").
-        then().
-            statusCode(SC_OK).
-            body("modelo", is("Taurus"));
+        Carro carroAtualizado =
+            putCarrosClient.alterarCarros(carroDaBase, carroDaBase.getId()).
+                extract().
+                    body().
+                        as(Carro.class);
+
+        assertEquals(carroAtualizado.getModelo(), carroDaBase.getModelo());
 
         //DELETE
-        given().
-            spec(getRequestSpecification()).
-            pathParam("id",carroDaBase.getId()).
-        when().
-            delete("/carros/{id}").
-        then().
-            statusCode(SC_NO_CONTENT);
+        deleteCarrosClient.deleteCarros(carroDaBase.getId());
 
         //READE TO CONFIRM THE DELETION
-        given().
-            spec(getRequestSpecification()).
-            pathParam("id",carroDaBase.getId()).
-        when().
-            get("/carros/{id}").
-        then().
-            statusCode(SC_NOT_FOUND);
+        getCarrosClient.getCarrosNotFound(carroDaBase.getId());
+
     }
 }
