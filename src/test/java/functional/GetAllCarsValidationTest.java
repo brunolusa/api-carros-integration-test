@@ -1,20 +1,11 @@
 package functional;
 
+import basetest.BaseTest;
 import org.testng.annotations.Test;
-import static io.restassured.RestAssured.given;
-import static org.apache.http.HttpStatus.SC_OK;
-import static requestspecification.CarrosRequestSpecification.getRequestSpecification;
 
-public class GetAllCarsValidationTest {
+public class GetAllCarsValidationTest extends BaseTest {
 
     @Test
-    public void buscaTodosOsCarrosTest(){
-        given().
-            spec(getRequestSpecification()).
-        when().
-            get("/carros").
-        then().
-            statusCode(SC_OK);
-    }
+    public void buscaTodosOsCarrosTest(){ getCarrosClient.getAllCarros(); }
 
 }
