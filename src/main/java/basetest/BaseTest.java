@@ -1,11 +1,7 @@
 package basetest;
 
-import com.aventstack.extentreports.testng.listener.ExtentITestListenerAdapter;
 import com.aventstack.extentreports.testng.listener.ExtentITestListenerClassAdapter;
-import com.lusa.carros.clients.DeleteCarrosClient;
-import com.lusa.carros.clients.GetActuatorClient;
-import com.lusa.carros.clients.GetCarrosClient;
-import com.lusa.carros.clients.PostCarrosClient;
+import com.lusa.carros.clients.*;
 import io.restassured.RestAssured;
 import io.restassured.specification.RequestSpecification;
 import org.testng.annotations.BeforeSuite;
@@ -19,15 +15,18 @@ public class BaseTest {
     public static GetActuatorClient getActuatorClient;
     public static GetCarrosClient getCarrosClient;
     public static PostCarrosClient postCarrosClient;
+    public static PutCarrosClient putCarrosClient;
 
     @BeforeSuite
     public static void setUp() {
+
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
 
         deleteCarrosClient = new DeleteCarrosClient();
         getActuatorClient = new GetActuatorClient();
         getCarrosClient = new GetCarrosClient();
         postCarrosClient = new PostCarrosClient();
+        putCarrosClient = new PutCarrosClient();
 
     }
 }
