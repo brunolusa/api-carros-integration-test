@@ -39,6 +39,6 @@ mvn clean test -Dtest=ValidacaoAcceptanceTest
 Você deve possuir a biblioteca _api-carros-it-client_ em seu repositório local.
 Para isso, clone o projeto api-carros-it-client, e execute o seguinte comando:
  - mvn clean install
- Link da biblioteca: [Carros API](https://github.com/brunolusa/api-carros)
+ Link da biblioteca: [API Carros It Client](https://github.com/brunolusa/api-carros-it-client)
  
  
