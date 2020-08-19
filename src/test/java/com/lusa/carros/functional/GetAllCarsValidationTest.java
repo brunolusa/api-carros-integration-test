@@ -6,6 +6,6 @@ import org.testng.annotations.Test;
 public class GetAllCarsValidationTest extends BaseTest {
 
     @Test
-    public void buscaTodosOsCarrosTest(){ getCarrosClient.getAllCarros(); }
+    public void buscaTodosOsCarrosTest(){ carrosClient.getAllCarros(); }
 
 }

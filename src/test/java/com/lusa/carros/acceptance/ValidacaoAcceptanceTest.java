@@ -14,14 +14,14 @@ public class ValidacaoAcceptanceTest extends BaseTest {
         //CRUD
         //CREATE
         Carro novoCarro =
-            postCarrosClient.criaNovoCarro(c).
+            carrosClient.criaNovoCarro(c).
                 extract().
                     body().
                         as(Carro.class);
 
         //READ
         Carro carroDaBase =
-            getCarrosClient.getCarroById(novoCarro.getId()).
+            carrosClient.getCarroById(novoCarro.getId()).
                 extract().
                     body().
                         as(Carro.class);
@@ -32,7 +32,7 @@ public class ValidacaoAcceptanceTest extends BaseTest {
         carroDaBase.setModelo("Taurus");
 
         Carro carroAtualizado =
-            putCarrosClient.alterarCarros(carroDaBase, carroDaBase.getId()).
+            carrosClient.alterarCarros(carroDaBase, carroDaBase.getId()).
                 extract().
                     body().
                         as(Carro.class);
@@ -40,10 +40,10 @@ public class ValidacaoAcceptanceTest extends BaseTest {
         assertEquals(carroAtualizado.getModelo(), carroDaBase.getModelo());
 
         //DELETE
-        deleteCarrosClient.deleteCarros(carroDaBase.getId());
+        carrosClient.deleteCarros(carroDaBase.getId());
 
         //READE TO CONFIRM THE DELETION
-        getCarrosClient.getCarrosNotFound(carroDaBase.getId());
+        carrosClient.getCarrosNotFound(carroDaBase.getId());
 
     }
 }

@@ -12,7 +12,7 @@ public class PostCarroValidationTest extends BaseTest {
     @Test(dataProvider = "novoCarro", dataProviderClass = CarroDataProvider.class)
     public void criaNovoCarro(Carro carro){
 
-        Carro carroCriado = postCarrosClient.criaNovoCarro(carro).extract().body().as(Carro.class);
+        Carro carroCriado = carrosClient.criaNovoCarro(carro).extract().body().as(Carro.class);
 
         assertNotNull(carroCriado.getId());
         assertEquals(carroCriado.getMarca(), carro.getMarca());

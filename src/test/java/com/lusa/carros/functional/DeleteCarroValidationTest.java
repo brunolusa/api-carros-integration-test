@@ -1,28 +1,26 @@
 package com.lusa.carros.functional;
 
 import com.lusa.carros.basetest.BaseTest;
-import com.lusa.carros.model.Carro;
 import com.lusa.carros.datadriven.CarroDataProvider;
+import com.lusa.carros.model.Carro;
 import org.testng.annotations.Test;
 
-public class DeleteCarroValidationTest extends BaseTest {
-
+public class DeleteCarroValidationTest extends BaseTest{
 
     @Test(dataProvider = "novoCarro", dataProviderClass = CarroDataProvider.class)
     public void validaDelecaodoCarro(Carro carroProvider){
-
         Carro carroInserido =
-            postCarrosClient.criaNovoCarro(carroProvider).
+            carrosClient.criaNovoCarro(carroProvider).
                 extract().
                     body().
                         as(Carro.class);
 
-        deleteCarrosClient.deleteCarros(carroInserido.getId());
+        carrosClient.deleteCarros(1L);
 
     }
 
     @Test
     public void validaDelecaoSemDados(){
-        deleteCarrosClient.deleteCarroNotFound(0L);
+        carrosClient.deleteCarroNotFound(0L);
     }
 }

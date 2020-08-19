@@ -6,6 +6,6 @@ import org.testng.annotations.Test;
 public class HealthCheckTest extends BaseTest {
 
     @Test
-    public void validaSaudedaAplicacao(){ getActuatorClient.getHealthCheck(); }
+    public void validaSaudedaAplicacao(){ carrosClient  .getHealthCheck(); }
 
 }

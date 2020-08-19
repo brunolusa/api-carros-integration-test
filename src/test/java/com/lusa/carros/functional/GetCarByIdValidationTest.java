@@ -13,7 +13,7 @@ public class GetCarByIdValidationTest extends BaseTest {
 
         Carro focus = CarroFactory.novoCarroFordFiesta();
 
-        Carro c = getCarrosClient.getCarroById(2L).extract().body().as(Carro.class);
+        Carro c = carrosClient.getCarroById(2L).extract().body().as(Carro.class);
 
         Assert.assertEquals(c.getMarca(), focus.getMarca());
         Assert.assertEquals(c.getModelo(), focus.getModelo());

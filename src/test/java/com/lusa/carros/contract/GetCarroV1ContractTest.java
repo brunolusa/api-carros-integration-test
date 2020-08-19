@@ -10,7 +10,7 @@ public class GetCarroV1ContractTest extends BaseTest {
     @Test
     public void ValidaContratoGetCarro(){
 
-        getCarrosClient.getCarroById(1L).body(matchesJsonSchema(new File("src/test/resources/jsonSchema/GetCarrosV1JsonSchema.json")));
+        carrosClient.getCarroById(1L).body(matchesJsonSchema(new File("src/test/resources/jsonSchema/GetCarrosV1JsonSchema.json")));
 
     }
 }

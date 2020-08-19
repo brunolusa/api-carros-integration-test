@@ -11,11 +11,11 @@ public class PutCarroValidationTest extends BaseTest {
     @Test
     public void atualizaAtributosCarro(){
 
-        List<Carro> carrosDaBase = getCarrosClient.getAllCarros().extract().body().jsonPath().getList(".",Carro.class);
+        List<Carro> carrosDaBase = carrosClient.getAllCarros().extract().body().jsonPath().getList(".",Carro.class);
 
         carrosDaBase.get(0).setMarca("Teste");
 
-        Carro carroAlterado = putCarrosClient.alterarCarros(carrosDaBase.get(0), carrosDaBase.get(0).getId()).extract().body().as(Carro.class);
+        Carro carroAlterado = carrosClient.alterarCarros(carrosDaBase.get(0), carrosDaBase.get(0).getId()).extract().body().as(Carro.class);
 
         assertEquals(carroAlterado.getId(), carrosDaBase.get(0).getId());
         assertEquals(carroAlterado.getMarca(), carrosDaBase.get(0).getMarca());
