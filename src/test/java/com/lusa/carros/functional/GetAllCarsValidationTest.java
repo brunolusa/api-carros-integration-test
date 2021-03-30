@@ -6,6 +6,9 @@ import org.testng.annotations.Test;
 public class GetAllCarsValidationTest extends BaseTest {
 
     @Test
-    public void buscaTodosOsCarrosTest(){ carrosClient.getAllCarros(); }
+    public void buscaTodosOsCarrosTest(){
 
+        String token = carrosClient.getTokenAuthentication("bruno", "123", "app_run", "app_run");
+
+        carrosClient.getAllCarros(token); }
 }
